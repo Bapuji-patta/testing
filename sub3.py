@@ -64,6 +64,7 @@ def commit_parent_changes():
 def commit_submodule_changes():
     print("Checking for changes in the submodule...")
 
+
     if os.path.exists(submodule_path):
         # Ensure the submodule is not in a detached HEAD state
         branch_check = run_command(['git', 'rev-parse', '--abbrev-ref', 'HEAD'], cwd=submodule_path)
