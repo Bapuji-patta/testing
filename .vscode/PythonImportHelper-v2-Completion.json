@@ -1,0 +1,101 @@
+[
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "run_command",
+        "kind": 2,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "def run_command(command, cwd=None):\n    try:\n        result = subprocess.run(command, cwd=cwd, text=True, capture_output=True, check=True)\n        return result.stdout.strip()\n    except subprocess.CalledProcessError as e:\n        print(f\"Error running command: {e}\")\n        print(f\"Output: {e.output}\")\n        raise\n# URLs for the parent repository and submodule (replace these with your actual URLs)\nparent_repo_url = \"https://github.com/yourusername/parent-repo.git\"",
+        "detail": "sub",
+        "documentation": {}
+    },
+    {
+        "label": "clone_parent_repo",
+        "kind": 2,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "def clone_parent_repo():\n    if not os.path.exists(parent_repo_path):\n        print(f\"Cloning parent repository from {parent_repo_url}...\")\n        run_command(['git', 'clone', parent_repo_url], cwd=parent_repo_path)\n# Function to clone the submodule if it doesn't exist\ndef clone_submodule():\n    if not os.path.exists(submodule_path):\n        print(f\"Cloning submodule from {submodule_url}...\")\n        os.makedirs(submodule_path, exist_ok=True)\n        run_command(['git', 'clone', submodule_url, submodule_path])",
+        "detail": "sub",
+        "documentation": {}
+    },
+    {
+        "label": "clone_submodule",
+        "kind": 2,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "def clone_submodule():\n    if not os.path.exists(submodule_path):\n        print(f\"Cloning submodule from {submodule_url}...\")\n        os.makedirs(submodule_path, exist_ok=True)\n        run_command(['git', 'clone', submodule_url, submodule_path])\n# Function to commit changes in the submodule\ndef commit_submodule_changes():\n    print(\"Checking for changes in the submodule...\")\n    # Change to the submodule directory\n    if os.path.exists(submodule_path):",
+        "detail": "sub",
+        "documentation": {}
+    },
+    {
+        "label": "commit_submodule_changes",
+        "kind": 2,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "def commit_submodule_changes():\n    print(\"Checking for changes in the submodule...\")\n    # Change to the submodule directory\n    if os.path.exists(submodule_path):\n        # Check if there are changes in the submodule\n        status = run_command(['git', 'status', '--porcelain'], cwd=submodule_path)\n        if status:\n            print(\"Changes detected in submodule. Committing...\")\n            # Add all changes in the submodule\n            run_command(['git', 'add', '.'], cwd=submodule_path)",
+        "detail": "sub",
+        "documentation": {}
+    },
+    {
+        "label": "commit_parent_changes",
+        "kind": 2,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "def commit_parent_changes():\n    print(\"Committing changes in the parent repository...\")\n    # Add the submodule reference change in the parent repository\n    run_command(['git', 'add', submodule_path], cwd=parent_repo_path)\n    # Commit the changes in the parent repository\n    run_command(['git', 'commit', '-m', 'Updated submodule reference'], cwd=parent_repo_path)\n    # Push the changes in the parent repository\n    run_command(['git', 'push'], cwd=parent_repo_path)\nif __name__ == \"__main__\":\n    # Clone the repositories if they don't exist",
+        "detail": "sub",
+        "documentation": {}
+    },
+    {
+        "label": "parent_repo_url",
+        "kind": 5,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "parent_repo_url = \"https://github.com/yourusername/parent-repo.git\"\nsubmodule_url = \"https://github.com/yourusername/submodule-repo.git\"\n# Path where you want to clone the repositories (adjust as needed)\nparent_repo_path = os.getcwd()  # Current working directory\nsubmodule_path = \"path/to/submodule\"  # Replace with actual submodule path\n# Function to clone the parent repository if it doesn't exist\ndef clone_parent_repo():\n    if not os.path.exists(parent_repo_path):\n        print(f\"Cloning parent repository from {parent_repo_url}...\")\n        run_command(['git', 'clone', parent_repo_url], cwd=parent_repo_path)",
+        "detail": "sub",
+        "documentation": {}
+    },
+    {
+        "label": "submodule_url",
+        "kind": 5,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "submodule_url = \"https://github.com/yourusername/submodule-repo.git\"\n# Path where you want to clone the repositories (adjust as needed)\nparent_repo_path = os.getcwd()  # Current working directory\nsubmodule_path = \"path/to/submodule\"  # Replace with actual submodule path\n# Function to clone the parent repository if it doesn't exist\ndef clone_parent_repo():\n    if not os.path.exists(parent_repo_path):\n        print(f\"Cloning parent repository from {parent_repo_url}...\")\n        run_command(['git', 'clone', parent_repo_url], cwd=parent_repo_path)\n# Function to clone the submodule if it doesn't exist",
+        "detail": "sub",
+        "documentation": {}
+    },
+    {
+        "label": "parent_repo_path",
+        "kind": 5,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "parent_repo_path = os.getcwd()  # Current working directory\nsubmodule_path = \"path/to/submodule\"  # Replace with actual submodule path\n# Function to clone the parent repository if it doesn't exist\ndef clone_parent_repo():\n    if not os.path.exists(parent_repo_path):\n        print(f\"Cloning parent repository from {parent_repo_url}...\")\n        run_command(['git', 'clone', parent_repo_url], cwd=parent_repo_path)\n# Function to clone the submodule if it doesn't exist\ndef clone_submodule():\n    if not os.path.exists(submodule_path):",
+        "detail": "sub",
+        "documentation": {}
+    },
+    {
+        "label": "submodule_path",
+        "kind": 5,
+        "importPath": "sub",
+        "description": "sub",
+        "peekOfCode": "submodule_path = \"path/to/submodule\"  # Replace with actual submodule path\n# Function to clone the parent repository if it doesn't exist\ndef clone_parent_repo():\n    if not os.path.exists(parent_repo_path):\n        print(f\"Cloning parent repository from {parent_repo_url}...\")\n        run_command(['git', 'clone', parent_repo_url], cwd=parent_repo_path)\n# Function to clone the submodule if it doesn't exist\ndef clone_submodule():\n    if not os.path.exists(submodule_path):\n        print(f\"Cloning submodule from {submodule_url}...\")",
+        "detail": "sub",
+        "documentation": {}
+    }
+]
