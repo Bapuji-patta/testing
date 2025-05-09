@@ -3,6 +3,8 @@ import os
 #functin to write submodule
 # Function to run a shell command and return the output
 # checking for changes
+#new commit added
+
 def run_command(command, cwd=None):
     try:
         result = subprocess.run(command, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True, check=True)
