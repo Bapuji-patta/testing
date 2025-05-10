@@ -2,7 +2,6 @@ import subprocess
 import os
 #functin to write submodule
 # Function to run a shell command and return the output
-# checking for changes
 #new commit added
 
 def run_command(command, cwd=None):
